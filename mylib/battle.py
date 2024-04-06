@@ -1,6 +1,9 @@
 """
 バトルに関するクラス
 """
+import math
+import random
+
 from mylib.charcter import Character
 
 
@@ -17,9 +20,18 @@ class Battle:
     # 攻撃
     def __do_attack(self, offence_character :Character, deffence_character :Character):
 
-        # ダメージ＝キャラクターの offenc
-        damage = offence_character.offence
+        """
+        ダメージ＝キャラクターの offenc * 乱数（0.8 ~ 1.2）
+        """
+        # 乱数生成
+        rand = random.uniform(0.8, 1.2)
+
+        # ダメージを計算　※小数点は切り捨て
+        damage = math.floor(offence_character.offence * rand)
+
+        # ダメージを反映
         deffence_character.hp -= damage
+
         print(
             offence_character.name + " が " + deffence_character.name + " に " + \
             str(damage) + " のダメージ。")
