@@ -1,5 +1,8 @@
-from mylib.Charcter import Character
-from mylib.Battle import Battle
+"""
+メインプログラム
+"""
+from mylib.charcter import Character
+from mylib.battle import Battle
 
 
 if __name__ == "__main__":
@@ -10,4 +13,4 @@ if __name__ == "__main__":
 
     # バトル実施
     battle = Battle(player1, player2)
-    battle.doBattle()
+    battle.do_battle()

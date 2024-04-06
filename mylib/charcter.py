@@ -1,4 +1,10 @@
+"""
+キャラクターに関するクラス
+"""
 class Character:
+    """
+    キャラクタークラス
+    """
 
     def __init__(self, name: str):
         # 名前は必ず設定

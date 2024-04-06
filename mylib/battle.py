@@ -1,7 +1,13 @@
-from mylib.Charcter import Character
+"""
+バトルに関するクラス
+"""
+from mylib.charcter import Character
 
 
 class Battle:
+    """
+    バトルクラス
+    """
 
     def __init__(self, player1, player2):
         self.player1 = player1
@@ -9,21 +15,23 @@ class Battle:
 
 
     # 攻撃
-    def __doAttack(self, offenceCharacter :Character, deffenceCharacter :Character):
-        
+    def __do_attack(self, offence_character :Character, deffence_character :Character):
+
         # ダメージ＝キャラクターの offenc
-        damage = offenceCharacter.offence
-        deffenceCharacter.hp -= damage
-        print(offenceCharacter.name + " が " + deffenceCharacter.name + " に " + str(damage) + " のダメージ。")
-    
+        damage = offence_character.offence
+        deffence_character.hp -= damage
+        print(
+            offence_character.name + " が " + deffence_character.name + " に " + \
+            str(damage) + " のダメージ。")
+
 
     # 1ターン分のバトル
-    def __doBattleOneTurn(self):
+    def __do_battle_one_turn(self):
 
         # 攻撃
         # 順番は player1 -> player2 の順番で攻撃する。
         # ダメージ＝キャラクターの offenc
-        self.__doAttack(self.player1, self.player2)
+        self.__do_attack(self.player1, self.player2)
 
         # 攻撃後、攻撃されたキャラクターのHPが0以下だったら。バトル終了
         if self.player2.hp <= 0:
@@ -31,16 +39,18 @@ class Battle:
 
         # 次の攻撃
         # ダメージ＝キャラクターの offenc
-        self.__doAttack(self.player2, self.player1)
+        self.__do_attack(self.player2, self.player1)
 
         # 攻撃後、攻撃されたキャラクターのHPが0以下だったら。バトル終了
         if self.player1.hp <= 0:
             return True
 
 
-    # バトル実施
-    # 1 vs 1 で実施
-    def doBattle(self):
+    def do_battle(self):
+        """
+        バトル実施
+        1 vs 1 で実施
+        """
 
         # 1 vs 1 の想定
         turn_count = 0
@@ -51,10 +61,10 @@ class Battle:
             print("ターン" + str(turn_count))
 
             # 1ターン分のバトルを実施
-            result = self.__doBattleOneTurn()
+            result = self.__do_battle_one_turn()
             if result:
                 break
-    
+
             # 次のターンとし、次のフェーズを実施する。
             print("")
 
