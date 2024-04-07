@@ -15,10 +15,14 @@ class Battle:
     def __init__(self, player1, player2):
         self.player1 = player1
         self.player2 = player2
+        self.battle_log_list = []
 
 
     # 攻撃
     def __do_attack(self, offence_character :Character, deffence_character :Character):
+
+        # ログリスト
+        attack_log_list = []
 
         """
         ダメージ＝キャラクターの offenc * 乱数（0.8 ~ 1.2）
@@ -32,9 +36,8 @@ class Battle:
         # ダメージを反映
         deffence_character.hp -= damage
 
-        print(
-            offence_character.name + " が " + deffence_character.name + " に " + \
-            str(damage) + " のダメージ。")
+        # ログを格納
+        self.battle_log_list.append(f'{offence_character.name} が {deffence_character.name} に {damage} のダメージ。')
 
 
     # 1ターン分のバトル
@@ -70,17 +73,20 @@ class Battle:
         # 1ターンをループで回す
         while True:
             turn_count += 1
-            print("ターン" + str(turn_count))
+            # print("ターン" + str(turn_count))
+            self.battle_log_list.append(f'ターン {turn_count}')
 
             # 1ターン分のバトルを実施
             result = self.__do_battle_one_turn()
             if result:
                 break
 
-            # 次のターンとし、次のフェーズを実施する。
-            print("")
+            # # 次のターンとし、次のフェーズを実施する。
+            # print("")
 
         if self.player1.hp <= 0:
-            print("player2 の勝ち。")
+            # print("player2 の勝ち。")
+            self.battle_log_list.append(f'{self.player2.name} の勝ち。')
         else:
-            print("player1 の勝ち。")
+            # print("player1 の勝ち。")
+            self.battle_log_list.append(f'{self.player1.name} の勝ち。')
