@@ -21,10 +21,13 @@ if __name__ == "__main__":
     st.title("ランダムバトル")
 
     # キャラクター情報の表示
-    st.write(f'{player1.name} - HP:{player1.hp} 攻撃力:{player1.offence}')
-    st.write(f'{player2.name} - HP:{player2.hp} 攻撃力:{player2.offence}')
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(f"<div style='border:2px solid black; padding:10px;'><h4>{player1.name}</h4><p>HP: {player1.hp}<br>Offence: {player1.offence}</p></div>", unsafe_allow_html=True)
+    with col2:
+        st.markdown(f"<div style='border:2px solid black; padding:10px;'><h4>{player2.name}</h4><p>HP: {player2.hp}<br>Offence: {player2.offence}</p></div>", unsafe_allow_html=True)
 
-    # st.button("攻撃")
+    st.button("攻撃")
 
     log_text = "\n".join(battle.battle_log_list)
 
