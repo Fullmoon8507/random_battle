@@ -18,5 +18,11 @@ if __name__ == "__main__":
     battle.do_battle()
 
     st.title("ランダムバトル")
-    for log in battle.battle_log_list:
-        st.write(log)
+    log_text = "\n".join(battle.battle_log_list)
+
+    # バトルのログを表示。テキストエリアの高さは200px。
+    st.text_area(
+        "ログ",
+        value=log_text,
+        height=200,
+    )
