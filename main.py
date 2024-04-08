@@ -23,9 +23,17 @@ if __name__ == "__main__":
     # キャラクター情報の表示
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown(f"<div style='border:2px solid black; padding:10px;'><h4>{player1.name}</h4><p>HP: {player1.hp}<br>Offence: {player1.offence}</p></div>", unsafe_allow_html=True)
+        player_info = f"<div style='border:2px solid black; padding:10px;'> \
+                        <h4>{player1.name}</h4> \
+                        <p>HP: {player1.hp}<br>Offence: {player1.offence}</p> \
+                        </div>"
+        st.markdown(player_info, unsafe_allow_html=True)
     with col2:
-        st.markdown(f"<div style='border:2px solid black; padding:10px;'><h4>{player2.name}</h4><p>HP: {player2.hp}<br>Offence: {player2.offence}</p></div>", unsafe_allow_html=True)
+        player_info = f"<div style='border:2px solid black; padding:10px;'> \
+                        <h4>{player2.name}</h4> \
+                        <p>HP: {player2.hp}<br>Offence: {player2.offence}</p> \
+                        </div>"
+        st.markdown(player_info, unsafe_allow_html=True)
 
     st.button("攻撃")
 
